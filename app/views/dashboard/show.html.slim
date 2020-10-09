@@ -1,32 +1,37 @@
-h1 Questions Dashboard
+.container.text-center
+  h1.text-primary Questions Dashboard
 
-.counts
-  h3 Current Totals
-  table.totals-table
-    tr
-      td Users
-      td
-        = @counts[:users]
-    tr
-      td Questions
-      td
-        = @counts[:questions]
-    tr
-      td Answers
-      td
-        = @counts[:answers]
-  
-  h3 Tenant Requests
-  table.tenants-table
-    tr
-      th Tenant Name
-      th Tenant API Key
-      th API Access Count
-    - for tenant in @tenants
-      tr
-        td
-          = tenant.name
-        td
-          = tenant.api_key
-        td
-          = tenant.query_count
+  .content
+    .row.mt-4
+      .counts.col-lg-6.offset-lg-3
+        h3.text-center.text-info.mb-3 Current Totals
+        table.table.totals-table
+          tr
+            td Users
+            td
+              = @counts[:users]
+          tr
+            td Questions
+            td
+              = @counts[:questions]
+          tr
+            td Answers
+            td
+              = @counts[:answers]
+    
+    .row.mt-4
+      .tenants.col-lg-6.offset-lg-3
+        h3.text-center.text-info.mb-3 Tenant API Request Counts
+        table.table.tenants-table
+          tr
+            th Tenant Name
+            th Tenant API Key
+            th API Access Count
+          - for tenant in @tenants
+            tr
+              td
+                = tenant.name
+              td
+                = tenant.api_key
+              td
+                = tenant.query_count
