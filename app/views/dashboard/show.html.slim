@@ -1,0 +1,32 @@
+h1 Questions Dashboard
+
+.counts
+  h3 Current Totals
+  table.totals-table
+    tr
+      td Users
+      td
+        = @counts[:users]
+    tr
+      td Questions
+      td
+        = @counts[:questions]
+    tr
+      td Answers
+      td
+        = @counts[:answers]
+  
+  h3 Tenant Requests
+  table.tenants-table
+    tr
+      th Tenant Name
+      th Tenant API Key
+      th API Access Count
+    - for tenant in @tenants
+      tr
+        td
+          = tenant.name
+        td
+          = tenant.api_key
+        td
+          = tenant.query_count
