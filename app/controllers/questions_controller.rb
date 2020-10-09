@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :check_validation
+
   def show
     render json: question_presenter(Question.includes(:user, answers: [:user]).where(id: params[:id], private: false))
   end
@@ -8,6 +10,10 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def check_validation
+    head :unauthorized unless Tenant.valid_key?(request.headers['HTTP_API_KEY'])
+  end
 
   def question_presenter(questions)
     output = []
