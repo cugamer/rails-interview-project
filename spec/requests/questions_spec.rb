@@ -7,9 +7,9 @@ RSpec.describe "Questions", type: :request do
 
   before do
     user = FactoryBot.create(:user)
-    FactoryBot.create_list(:question, question_count, user_id: user.id)
+    FactoryBot.create_list(:question, question_count, user: user)
     question_count.times do |n|
-      FactoryBot.create_list(:answer, answers_per_question, question_id: n + 1)
+      FactoryBot.create_list(:answer, answers_per_question, question_id: n + 1, user: user)
     end
     Question.last.update_attribute(:private, false)
   end
