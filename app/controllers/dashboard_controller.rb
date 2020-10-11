@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DashboardController < ApplicationController
   def show
     @counts = object_counts
@@ -7,7 +9,7 @@ class DashboardController < ApplicationController
   private
 
   def object_counts
-    counts = {
+    {
       users: User.count,
       questions: Question.count,
       answers: Answer.count

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tenant < ActiveRecord::Base
   before_create :generate_api_key
 
@@ -13,7 +15,7 @@ class Tenant < ActiveRecord::Base
     end
     false
   end
-  
+
   private
 
   def generate_api_key

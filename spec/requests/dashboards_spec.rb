@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "Dashboards", type: :request do
   let(:question_count) { 3 }
   let(:answers_per_question) { 2 }
-  
+
   before do
     user = FactoryBot.create(:user)
     FactoryBot.create_list(:question, question_count, user: user)

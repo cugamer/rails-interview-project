@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "Questions", type: :request do
@@ -18,7 +20,7 @@ RSpec.describe "Questions", type: :request do
     context 'with valid API key' do
       it 'returns a correct JSON response' do
         total_public = Question.where(private: false).count
-        
+
         headers = { 'HTTP_API_KEY' => tenant.api_key }
         get questions_path, {}, headers
 
@@ -41,7 +43,7 @@ RSpec.describe "Questions", type: :request do
 
   describe "GET /questions/:id" do
     context 'with valid API key' do
-      it 'returns a correct JSON response' do        
+      it 'returns a correct JSON response' do
         headers = { 'HTTP_API_KEY' => tenant.api_key }
         get question_path(Question.last.id), {}, headers
 
